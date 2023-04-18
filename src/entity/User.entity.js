@@ -1,4 +1,5 @@
 const { EntitySchema } = require("typeorm");
+const friendSchema = require("./Friend.entity");
 
 class User {
   constructor() {
@@ -38,19 +39,10 @@ module.exports = new EntitySchema({
   },
   relations: {
     friends: {
-      type: "many-to-many",
+      type: "one-to-many",
       target: "Friend",
-      joinTable: {
-        name: "user_friend",
-        joinColumn: {
-          name: "userId",
-          referencedColumnName: "id",
-        },
-        inverseJoinColumn: {
-          name: "friendId",
-          referencedColumnName: "id",
-        },
-      },
+      inverseSide: "user",
+      eager: true, 
     },
   },
 });

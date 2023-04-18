@@ -12,8 +12,8 @@ const dataSource = new DataSource({
     logging: true,
     synchronize: true,
     entities: [
-        require("./src/entity/Friend"),
-        require("./src/entity/User"),
+        require("./src/entity/Friend.entity"),
+        require("./src/entity/User.entity"),
         require("./src/entity/FriendRequest")
     ]
 });

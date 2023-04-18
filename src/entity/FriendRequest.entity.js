@@ -1,4 +1,4 @@
-var EntitySchema = require("typeorm").EntitySchema;
+const { EntitySchema } = require("typeorm");
 
 module.exports = new EntitySchema({
   name: "FriendRequest",

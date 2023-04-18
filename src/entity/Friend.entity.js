@@ -1,4 +1,9 @@
-var EntitySchema = require("typeorm").EntitySchema;
+const { EntitySchema, PrimaryColumn } = require("typeorm");
+
+class Friend {
+  constructor() {
+  }
+}
 
 module.exports = new EntitySchema({
   name: "Friend",
@@ -7,6 +12,12 @@ module.exports = new EntitySchema({
     id: {
       primary: true,
       generated: "increment",
+      type: "int",
+    },
+    userId: {
+      type: "int",
+    },
+    friendId: {
       type: "int",
     },
   },
@@ -18,6 +29,7 @@ module.exports = new EntitySchema({
         name: "userId",
         referencedColumnName: "id",
       },
+      inverseSide: "friends",
     },
     friend: {
       type: "many-to-one",
@@ -26,6 +38,7 @@ module.exports = new EntitySchema({
         name: "friendId",
         referencedColumnName: "id",
       },
+      inverseSide: "friends",
     },
   },
 });

@@ -1,6 +1,6 @@
 const { dataSource } = require("../../dataSource");
 const { Not, Equal } = require("typeorm");
-const UserEntity = require("../entity/User.js");
+const UserEntity = require("../entity/User.entity.js");
 
 class UserRepository {
 
@@ -14,6 +14,15 @@ class UserRepository {
 
         return users;
 
+    }
+
+    getUser = async (loginUserId) => {
+
+        const userRepository = dataSource.getRepository(UserEntity);
+
+        const loginUser = await userRepository.findOne({where: { id: loginUserId }, relations: ["friends"] });
+
+        return loginUser;
     }
 
 }
