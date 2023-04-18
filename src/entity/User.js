@@ -1,4 +1,10 @@
-var EntitySchema = require("typeorm").EntitySchema;
+const { EntitySchema } = require("typeorm");
+
+class User {
+  constructor() {
+    this.createDate = new Date(); 
+  }
+}
 
 module.exports = new EntitySchema({
   name: "User",
@@ -10,14 +16,24 @@ module.exports = new EntitySchema({
       type: "int",
     },
     userId: {
-        unique: true,
-        type: "varchar",
+      unique: true,
+      type: "varchar",
     },
     password: {
-        type: "varchar",
+      type: "varchar",
     },
     name: {
-        type: "varchar",
+      type: "varchar",
+    },
+    friendsCount: {
+      type: "int",
+    },
+    createDate: {
+      type: "datetime",
+      transformer: {
+        from: (value) => value, 
+        to: (value) => value.toISOString().substr(0, 10), 
+      },
     },
   },
   relations: {
@@ -38,4 +54,3 @@ module.exports = new EntitySchema({
     },
   },
 });
-
