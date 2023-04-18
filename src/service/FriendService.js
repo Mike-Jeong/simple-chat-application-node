@@ -1,39 +1,37 @@
-const UserService = require("../service/UserService");
+const FriendRepository = require("../repository/FriendRepository");
+
+class FriendDTO {
+    constructor(friend) {
+        this.friendId = friend.userId;
+        this.createDate = friend.createDate;
+        this.friendsCount = friend.friendsCount;
+        this.id = friend.id;
+    }
+}
 
 class FriendService {
 
     constructor() {
-        this.userService = new UserService();
+        this.friendRepository = new FriendRepository();
         this.err = new Error('FriendService Error');
     }
 
     getFriends = async (loginUserId) => {
 
-        const [friends, users] = await Promise.all([
-            this.getFriendUsers(loginUserId),
-            this.userRepository.getUsers(loginUserId)
-        ]);
-
-        const friendIds = friends.map(friend => friend.id);
-
-        const userDtoList = users.map(user => {
-            const isFriend = friendIds.includes(user.id);
-            return new UserDTO(user, isFriend);
-        });
-
-        return userDtoList;
-    };
-
-    deleteFriend = async (loginUserId) => {
-
-        const friends = await this.userRepository.getFriends(loginUserId);
+        const friends = await this.friendRepository.getFriends(loginUserId)
 
         const friendDtoList = friends.map(friend => {
-            const isFriend = true;
-            return new UserDTO(user, isFriend);
+            return new FriendDTO(friend);
         });
 
         return friendDtoList;
+    };
+
+    deleteFriend = async (loginUserId, targetUserId) => {
+
+        const result = await this.friendRepository.deleteFriend(loginUserId, targetUserId);
+
+        return result;
     };
 };
 

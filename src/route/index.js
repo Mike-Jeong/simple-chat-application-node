@@ -5,7 +5,7 @@ const friendRouter = require("./Friend");
 const requestRouter = require("./FriendRequest");
 
 router.use("/users", userRouter);
-//router.use("/friends", friendRouter);
+router.use("/friends", friendRouter);
 //router.use("/friend-requests", requestRouter);
 
 module.exports = router;

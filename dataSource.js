@@ -14,7 +14,7 @@ const dataSource = new DataSource({
     entities: [
         require("./src/entity/Friend.entity"),
         require("./src/entity/User.entity"),
-        require("./src/entity/FriendRequest")
+        require("./src/entity/FriendRequest.entity")
     ]
 });
 

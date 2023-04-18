@@ -4,5 +4,7 @@ const FriendController = require("../controller/FriendController");
 const friendController = new FriendController();
 const wrapAsyncController = require('../middleware/wrapAsyncController');
 
-/*router.get(wrapAsyncController(friendController.getFriends));
-router.delete(wrapAsyncController(friendController.deleteFriend));*/
+router.get('/', wrapAsyncController(friendController.getFriends));
+router.delete('/', wrapAsyncController(friendController.deleteFriend));
+
+module.exports = router;
