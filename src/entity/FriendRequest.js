@@ -1,8 +1,8 @@
 var EntitySchema = require("typeorm").EntitySchema;
 
 module.exports = new EntitySchema({
-  name: "Request",
-  tableName: "request",
+  name: "FriendRequest",
+  tableName: "friend_request",
   columns: {
     id: {
       primary: true,
@@ -14,6 +14,11 @@ module.exports = new EntitySchema({
     },
     receiverId: {
       type: "int",
+    },
+    status: {
+      type: "enum",
+      enum: ["pending", "accepted", "rejected"],
+      default: "pending",
     },
   },
   relations: {

@@ -19,7 +19,6 @@ module.exports = new EntitySchema({
     name: {
         type: "varchar",
     },
-    // 추가적인 필드들을 정의할 수 있습니다.
   },
   relations: {
     friends: {
