@@ -25,6 +25,9 @@ app.options("*", cors());
 app.use("/", Router);
 app.use(errorHandler);
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 
 const server = http.createServer(app);
 const io = socket(server);
