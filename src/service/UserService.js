@@ -5,6 +5,7 @@ class UserDTO {
         this.userId = user.userId;
         this.createDate = user.createDate;
         this.friendsCount = user.friendsCount;
+        this.name = friendRequestUsers.name;
         this.id = user.id;
         this.isFriend = isFriend;
     }
@@ -39,6 +40,13 @@ class UserService {
         const loginUser = await this.userRepository.getUser(loginUserId);
 
         return loginUser;
+    };
+
+    createUser = async (createUserdto) => {
+
+        const result = await this.userRepository.createUser(createUserdto);
+
+        return result;
     };
 };
 

@@ -4,6 +4,8 @@ const FriendRequestController = require("../controller/FriendRequestController")
 const friendRequestController = new FriendRequestController();
 const wrapAsyncController = require('../middleware/wrapAsyncController');
 
-/*router.get(wrapAsyncController(friendRequestController.getFriendRequests));
-router.post(wrapAsyncController(friendRequestController.createFriendRequests));
-router.patch(wrapAsyncController(friendRequestController.processFriendRequests));*/
+router.get('/', wrapAsyncController(friendRequestController.getFriendRequests));
+router.post('/', wrapAsyncController(friendRequestController.createFriendRequest));
+router.patch('/', wrapAsyncController(friendRequestController.processFriendRequest));
+
+module.exports = router;

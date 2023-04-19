@@ -1,5 +1,4 @@
 const { dataSource } = require("../../dataSource");
-const { Not, Equal } = require("typeorm");
 const FriendEntity = require("../entity/Friend.entity");
 
 class FriendRepository {
@@ -16,13 +15,6 @@ class FriendRepository {
         return friends.map(friend => friend.friend); 
 
     }
-
-    /*addFriend = async (loginUserId) => {
-
-        const friendRepository = dataSource.getRepository(FriendEntity);
-
-        return 1;
-    }*/
 
     deleteFriend = async (loginUserId, targetUserId) => {
 
@@ -43,6 +35,27 @@ class FriendRepository {
     
         return true;
     }
+
+    createFriend = async (senderId, receiverId) => {
+
+        const friendRepository = dataSource.getRepository(FriendEntity);
+
+        const newFriend1 = new FriendEntity();
+
+        newFriend1.userId = senderId;
+        newFriend1.friendId = receiverId;
+    
+        await friendRepository.save(newFriend1);
+
+        const newFriend2 = new FriendEntity();
+
+        newFriend2.userId = receiverId;
+        newFriend2.friendId = senderId;
+    
+        await friendRepository.save(newFriend2);
+    
+        return true;
+    } 
 
 }
 

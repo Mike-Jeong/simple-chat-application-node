@@ -1,5 +1,4 @@
 const { EntitySchema } = require("typeorm");
-const friendSchema = require("./Friend.entity");
 
 class User {
   constructor() {

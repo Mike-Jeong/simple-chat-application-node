@@ -1,5 +1,10 @@
 const { EntitySchema } = require("typeorm");
 
+class FriendRequest {
+  constructor() {
+  }
+}
+
 module.exports = new EntitySchema({
   name: "FriendRequest",
   tableName: "friend_request",

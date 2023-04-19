@@ -4,7 +4,7 @@ class FriendDTO {
     constructor(friend) {
         this.friendId = friend.userId;
         this.createDate = friend.createDate;
-        this.friendsCount = friend.friendsCount;
+        this.friendName = friendRequestUsers.name;
         this.id = friend.id;
     }
 }

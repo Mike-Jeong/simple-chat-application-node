@@ -25,6 +25,22 @@ class UserRepository {
         return loginUser;
     }
 
+    createUser = async (createUserDto) => {
+
+        const userRepository = dataSource.getRepository(UserEntity);
+
+        const newUser = new UserEntity(createUserDto);
+
+        newUser = createUserDto.userId;
+        newUser = createUserDto.password;
+        newUser = createUserDto.name;
+        newUser = 0;
+
+        await userRepository.save(newUser);
+
+        return true;
+    }
+
 }
 
 module.exports = UserRepository;
