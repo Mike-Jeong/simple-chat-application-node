@@ -28,6 +28,10 @@ app.use(errorHandler);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+app.get("/login", (req, res) => {
+    res.render("login");
+}); 
+
 
 const server = http.createServer(app);
 const io = socket(server);

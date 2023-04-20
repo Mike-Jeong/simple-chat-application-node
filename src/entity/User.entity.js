@@ -2,7 +2,7 @@ const { EntitySchema } = require("typeorm");
 
 class User {
   constructor() {
-    this.createDate = new Date(); 
+    this.createDate = new Date();
   }
 }
 
@@ -25,14 +25,12 @@ module.exports = new EntitySchema({
     name: {
       type: "varchar",
     },
-    friendsCount: {
-      type: "int",
-    },
+
     createDate: {
       type: "datetime",
       transformer: {
-        from: (value) => value, 
-        to: (value) => value.toISOString().substr(0, 10), 
+        from: (value) => value,
+        to: (value) => value.toISOString().substr(0, 10),
       },
     },
   },
@@ -41,7 +39,7 @@ module.exports = new EntitySchema({
       type: "one-to-many",
       target: "Friend",
       inverseSide: "user",
-      eager: true, 
+      eager: true,
     },
   },
 });

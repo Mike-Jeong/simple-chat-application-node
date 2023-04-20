@@ -51,7 +51,7 @@ class FriendRequestRepository {
         return friendRequest;
     }
 
-    deleteFriend = async (friendRequest) => {
+    deleteFriendRequest = async (friendRequest) => {
 
         const friendRequestRepository = dataSource.getRepository(FriendRequestEntity);
 
