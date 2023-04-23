@@ -1,6 +1,6 @@
 const AuthService = require("../service/AuthService");
 
-class UsersController {
+class AuthController {
     authService = new AuthService();
 
     login = async (req, res) => {
@@ -10,4 +10,4 @@ class UsersController {
     };
 };
 
-module.exports = UsersController;
+module.exports = AuthController;

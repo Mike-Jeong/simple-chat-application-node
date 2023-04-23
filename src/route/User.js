@@ -6,6 +6,6 @@ const authMiddleware = require("../middleware/authMiddleware");
 const wrapAsyncController = require('../middleware/wrapAsyncController');
 
 router.get('/', authMiddleware, wrapAsyncController(userController.getUsers));
-router.post('/', authMiddleware, wrapAsyncController(userController.createUser));
+router.post('/', wrapAsyncController(userController.createUser));
 
 module.exports = router;
