@@ -1,5 +1,5 @@
 const express = require('express');
-const socket = require('socket.io');
+const socket = require('./socket');
 const http = require('http');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -34,7 +34,7 @@ app.get("/login", (req, res) => {
 
 
 const server = http.createServer(app);
-const io = socket(server);
+socket(server);
 
 dataSource
     .initialize()
